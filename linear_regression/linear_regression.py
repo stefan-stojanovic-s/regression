@@ -25,7 +25,7 @@ class LinearRegresion:
           # new_X=errors.T.dot(X) #97x1.T 97x2
            theta=theta-alpha*(1/m)*((h_theta-y).T.dot(X)).T #we transpose it
            j_hist.append(self.compute_cost(X,y,theta))
-        return theta,j_hist,thinking
+        return theta,j_hist
    
     def plot_data(self,X,y,theta):
         plt.figure(figsize=(8,5))
@@ -53,11 +53,10 @@ model=LinearRegresion()
 
 X=np.append(np.ones((data.shape[0],1)),X,axis=1);
 
-model.plot_data(X,y,theta)
+#model.plot_data(X,y,theta)
 
-theta,j_history,thinking=model.gradient_descent(X,y,theta,alpha,iterr)
+theta,j_history=model.gradient_descent(X,y,theta,alpha,iterr)
 #print("Computed cost is ",model.compute_cost(X,y,theta));
-print(thinking)
 model.plot_data(X,y,theta)
 
 
